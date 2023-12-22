@@ -1,0 +1,53 @@
+project:
+  type: book
+
+book:
+  title: "Curso de Análisis de Datos"
+  author: "Enric Pallás/Julio sheinbaum"
+  date: "12/22/2023"
+  favicon: cicese_logo.png
+  description: A side-by-side comparison of the Polars and Pandas libraries.
+  keyword: datos,estadística,álgebra lineal, python, julia, netcdf, data science, data análisis
+  url: https://jsheinbaum.github.io/
+  sidebar: 
+    background: "#F5F5F5"
+    logo: cicese_logo.png
+    search: true
+  repo-url: https://github.com/jsheinbaum/Curso_Analisis_de_datos/
+  repo-subdir: book
+  repo-branch: development
+  repo-actions: [edit, issue, source]
+  sharing: [twitter, facebook, linkedin]
+  image: cicese_logo.png
+  #comments:
+  #  giscus:
+  #    repo: 
+  #open-graph:
+  #  image: cicese_logo.png
+  #  description: Curso Análisis de datos
+
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - chap1.qmd
+    - chap2.qmd
+    - chap3.qmd
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+#format:
+#  html:
+#    theme: cosmo
+#  pdf:
+#    documentclass: scrreprt
+
+format:
+  html:
+    theme:
+      light: cosmo
+    code-fold: false
+    css: custom.css
+    backgroundcolor: "#F5F5F5"
+
