@@ -13,7 +13,7 @@ book:
     background: "#F5F5F5"
     logo: cicese_logo.png
     search: true
-  repo-url: https://github.com/jsheinbaum/Curso_Analisis_de_datos/
+  repo-url: https://github.com/jsheinbaum/curso_analisis_de_datos/
   repo-subdir: book
   repo-branch: development
   repo-actions: [edit, issue, source]
@@ -51,3 +51,5 @@ format:
     css: custom.css
     backgroundcolor: "#F5F5F5"
 
+#execute:
+#freeze: auto

@@ -1,0 +1,107 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Curso de Análisis de Datos",
+    "section": "",
+    "text": "Preface\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books."
+  },
+  {
+    "objectID": "intro.html#escalas-de-variabilidad",
+    "href": "intro.html#escalas-de-variabilidad",
+    "title": "1  Introduction",
+    "section": "1.1 Escalas de variabilidad",
+    "text": "1.1 Escalas de variabilidad\nEn el oc'eano conviven una gran cantidad de corrientes de diferentes escalas espaciales y temporales. Las escalas espaciales típicas de la circulaci'on oce'anica son la gran escala, la mesoescala, submesoescala, y microescala. La gran escala es del \\({\\cal O}(1000\\,{\\rm km})\\) y está determinada por la circulaci'on general en el oc'eano como la celda de circulación meridional y los grandes giros anticicl'onicos de las grandes cuencas oce'anicas; las escalas temporales de la larga escala varían entre meses,a~nos y cientos de años. La mesoescala esta definida por corrientes de \\({\\cal O}(100\\,{\\rm km})\\) como remolinos, corrientes costeras, filamentos, frentes, etc. Son corrientes mas regionales pero pueden tener gran influencia sobre la circulaci'on general o de larga escala. Sus escalas temporales son de semanas a meses. La submesoescala corresponde a corrientes del \\({\\cal O}(10\\,{\\rm km})\\) de caracter local: remolinos, filamentos, frentes, corrientes en playas, puertos, y estuarios. La submesoscala varía temporalmente con rapidez en tiempos que varían de horas a días. Finalmente podemos hablar de la microescala que son remolinos del orden de centímetros a metros y generalmente es la escala característica de la turbulencia que transfiere energía desde la submesoescala hacia la disipaci'on molecular. Aquí podemos hablar de fen'omenos del orden de segundos y minutos.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  },
+  {
+    "objectID": "chap1.html#polar-axis",
+    "href": "chap1.html#polar-axis",
+    "title": "2  Matplotlib Demo",
+    "section": "2.1 Polar Axis",
+    "text": "2.1 Polar Axis\nFor a demonstration of a line plot on a polar axis, see Figure 3.1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\ntheta = np.linspace(0, 2*np.pi, 1000)\nr = 3* np.sin(18 * theta)\nr1 = 0.5 - 0.5 * np.sin(10*theta)\nr2=0.5+0.5*np.cos(18*theta)\n#plt.polar(theta, r, 'r')\n#r = np.arange(0, 2, 0.01)\n#theta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r,'b')\nax.plot(theta, r1,'r')\nax.plot(theta, r2,'g')\nax.set_rticks([-1.0,-0.5,0.0,0.5, 1, 1.5, 2, 2.5, 3.0])\nax.grid(True)\nplt.show()\n\n\n\n\n\nFigure 2.1: A line plot on a polar axis"
+  },
+  {
+    "objectID": "chap1.html#widgets",
+    "href": "chap1.html#widgets",
+    "title": "2  Matplotlib Demo",
+    "section": "2.2 WIDGETS",
+    "text": "2.2 WIDGETS\n\n\nCode\nfrom ipyleaflet import Map, Marker, basemaps, basemap_to_tiles\nm = Map(\n  basemap=basemap_to_tiles(\n    basemaps.NASAGIBS.ModisTerraTrueColorCR, \"2023-05-27\"\n  ),\n  center=(31.8841, 243.413),\n  zoom=4\n)\nm.add_layer(Marker(location=(31.8841,243.413)))\nm\n\n\n\n\nFigure 2.2: A widgets demo"
+  },
+  {
+    "objectID": "chap1.html#xarray",
+    "href": "chap1.html#xarray",
+    "title": "2  Matplotlib Demo",
+    "section": "2.3 XARRAY",
+    "text": "2.3 XARRAY\n\n\nCode\nimport xarray as xr\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport cartopy.crs as ccrs\nfrom matplotlib.animation import FuncAnimation\nvariables=['u-component_of_wind_height_above_ground','v-component_of_wind_height_above_ground']\ndsw=xr.open_dataset('https://thredds.ucar.edu/thredds/dodsC/grib/NCEP/GFS/Global_0p25deg/Best')[variables]\nfrom datetime import datetime, timedelta\nstarttime=datetime.utcnow()\nstarttime\ninittime = datetime.utcnow().date().isoformat()   ### Simulation startime..\nendtime = starttime + timedelta(days=10)\nfinaltime=endtime.date().isoformat()\nprint(inittime)\nprint(finaltime)\nlat_toplot = np.arange(5, 35.25, 0.25) # last number is exclusive\nlon_toplot = np.arange(260, 310.25, 0.25) # last number is exclusive\ndataw= dsw.sel(time1=slice(inittime,finaltime),height_above_ground2=10, lon=lon_toplot, lat=lat_toplot)\nu10=dataw['u-component_of_wind_height_above_ground'].values\nv10=dataw['v-component_of_wind_height_above_ground'].values\nlon=dataw.lon.values\nlat=dataw.lat.values\nl=10\nU10=u10[l,:,:].squeeze()\nV10=v10[l,:,:].squeeze()\nvec_crs = ccrs.RotatedPole(pole_longitude=180.0, pole_latitude=90.0)\n#central_rotated_longitude=0.0)\ndata_crs=ccrs.PlateCarree()\nprint(dataw.time1[l])\nfig = plt.figure(figsize=(20,5))\nax1 = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())\nax1.set_extent([260, 311, 4, 40], crs=ccrs.PlateCarree())\nax1.coastlines()\nmagnitude = (U10 ** 2 + V10 ** 2) ** 0.5\nmagnitude.shape\nax1.streamplot(lon, lat, U10, V10, transform=vec_crs,\n                  linewidth=2, density=2, color=magnitude)\nax1.quiver(lon[::5],lat[::5],U10[::5,::5],V10[::5,::5],scale=200.0,color='b',transform=data_crs)\nplt.show()\n\n\n2023-12-22\n2024-01-01\n\n\n&lt;xarray.DataArray 'time1' ()&gt;\narray('2023-12-23T06:00:00.000000000', dtype='datetime64[ns]')\nCoordinates:\n    time1                 datetime64[ns] 2023-12-23T06:00:00\n    reftime1              datetime64[ns] ...\n    height_above_ground2  float32 10.0\nAttributes:\n    standard_name:        time\n    long_name:            GRIB forecast or observation time\n    _CoordinateAxisType:  Time\n\n\n\n\n\nxarray demo"
+  },
+  {
+    "objectID": "chap2.html#empieza",
+    "href": "chap2.html#empieza",
+    "title": "3  Test Reveal Presentations",
+    "section": "3.1 Empieza",
+    "text": "3.1 Empieza\n\nTurn on Math\n\\(Ax=b\\)\nCauchy-Shwarz\n\n\\[\\left( \\sum_{k=1}^n a_k b_k \\right)^2 \\leq \\left( \\sum_{k=1}^n a_k^2 \\right) \\left( \\sum_{k=1}^n b_k^2 \\right)\\]"
+  },
+  {
+    "objectID": "chap2.html#more-math",
+    "href": "chap2.html#more-math",
+    "title": "3  Test Reveal Presentations",
+    "section": "3.2 More Math",
+    "text": "3.2 More Math\n\n\n\nA Cross Product Formula\n\n\\[\\mathbf{V}_1 \\times \\mathbf{V}_2 =  \\begin{vmatrix}\n  \\mathbf{\\hat i} &  \\mathbf{\\hat j} & \\mathbf{\\hat k} \\\\\n  \\frac{\\partial X}{\\partial u} &  \\frac{\\partial Y}{\\partial u} & 0 \\\\\n  \\frac{\\partial X}{\\partial v} &  \\frac{\\partial Y}{\\partial v} & 0\n  \\end{vmatrix}  \\]\n\n\nThe Lorenz Equations \\[\n\\begin{aligned}\n\\dot{x} & = \\sigma(y-x) \\\\\n\\dot{y} & = \\rho x - y - xz \\\\\n\\dot{z} & = -\\beta z + xy\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "chap2.html#julia",
+    "href": "chap2.html#julia",
+    "title": "3  Test Reveal Presentations",
+    "section": "3.3 Julia",
+    "text": "3.3 Julia\n#| echo: true\nusing GLMakie\n\nBase.@kwdef mutable struct Lorenz\n    dt::Float64 = 0.01\n    σ::Float64 = 10\n    ρ::Float64 = 28\n    β::Float64 = 8/3\n    x::Float64 = 1\n    y::Float64 = 1\n    z::Float64 = 1\nend\n\nfunction step!(l::Lorenz)\n    dx = l.σ * (l.y - l.x)\n    dy = l.x * (l.ρ - l.z) - l.y\n    dz = l.x * l.y - l.β * l.z\n    l.x += l.dt * dx\n    l.y += l.dt * dy\n    l.z += l.dt * dz\n    Point3f(l.x, l.y, l.z)\nend\n\nattractor = Lorenz()\n\npoints = Observable(Point3f[])\ncolors = Observable(Int[])\n\nset_theme!(theme_black())\n\nfig, ax, l = lines(points, color = colors,\n    colormap = :inferno, transparency = true,\n    axis = (; type = Axis3, protrusions = (0, 0, 0, 0),\n        viewmode = :fit, limits = (-30, 30, -30, 30, 0, 50)))\n\nrecord(fig, \"lorenz.mp4\", 1:120) do frame\n    for i in 1:50\n        push!(points[], step!(attractor))\n        push!(colors[], frame)\n    end\n    ax.azimuth[] = 1.7pi + 0.3 * sin(2pi * frame / 120)\n    notify.((points, colors))\n    l.colorrange = (0, frame)\nend"
+  },
+  {
+    "objectID": "chap2.html#lorenz-atractor",
+    "href": "chap2.html#lorenz-atractor",
+    "title": "3  Test Reveal Presentations",
+    "section": "3.4 Lorenz Atractor",
+    "text": "3.4 Lorenz Atractor"
+  },
+  {
+    "objectID": "chap2.html#polar-axis",
+    "href": "chap2.html#polar-axis",
+    "title": "3  Test Reveal Presentations",
+    "section": "3.5 Polar Axis",
+    "text": "3.5 Polar Axis\nFor a demonstration of a line plot on a polar axis, see Figure 3.1.\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\nFigure 3.1: A line plot on a polar axis"
+  },
+  {
+    "objectID": "chap2.html#python",
+    "href": "chap2.html#python",
+    "title": "3  Test Reveal Presentations",
+    "section": "3.6 Python",
+    "text": "3.6 Python\n\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(subplot_kw={'projection': 'polar'})\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()"
+  },
+  {
+    "objectID": "chap2.html#gfs-download-and-plot",
+    "href": "chap2.html#gfs-download-and-plot",
+    "title": "3  Test Reveal Presentations",
+    "section": "3.7 GFS Download and Plot",
+    "text": "3.7 GFS Download and Plot\n\n\n\n#| label: xarray plot\n#| fig-cap: \"xarray demo\"\nimport xarray as xr\nimport numpy as np\nimport matplotlib.pyplot as plt\nimport cartopy.crs as ccrs\nfrom matplotlib.animation import FuncAnimation\nvariables=['u-component_of_wind_height_above_ground','v-component_of_wind_height_above_ground']\ndsw=xr.open_dataset('https://thredds.ucar.edu/thredds/dodsC/grib/NCEP/GFS/Global_0p25deg/Best')[variables]\nfrom datetime import datetime, timedelta\nstarttime=datetime.utcnow()\nstarttime\ninittime = datetime.utcnow().date().isoformat()   ### Simulation startime..\nendtime = starttime + timedelta(days=10)\nfinaltime=endtime.date().isoformat()\nprint(inittime)\nprint(finaltime)\nlat_toplot = np.arange(5, 35.25, 0.25) # last number is exclusive\nlon_toplot = np.arange(260, 310.25, 0.25) # last number is exclusive\ndataw= dsw.sel(time1=slice(inittime,finaltime),height_above_ground2=10, lon=lon_toplot, lat=lat_toplot)\nu10=dataw['u-component_of_wind_height_above_ground'].values\nv10=dataw['v-component_of_wind_height_above_ground'].values\nlon=dataw.lon.values\nlat=dataw.lat.values\nl=10\nU10=u10[l,:,:].squeeze()\nV10=v10[l,:,:].squeeze()\nvec_crs = ccrs.RotatedPole(pole_longitude=180.0, pole_latitude=90.0)\n#central_rotated_longitude=0.0)\ndata_crs=ccrs.PlateCarree()\n#print(dataw.time1[l])\nfig = plt.figure(figsize=(20, 5))\nax1 = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())\nax1.set_extent([260, 311, 4, 40], crs=ccrs.PlateCarree())\nax1.coastlines()\nmagnitude = (U10 ** 2 + V10 ** 2) ** 0.5\n#magnitude.shape\nax1.streamplot(lon, lat, U10, V10, transform=vec_crs,\n                  linewidth=2, density=2, color=magnitude)\nax1.quiver(lon[::5],lat[::5],U10[::5,::5],V10[::5,::5],scale=200.0,color='b',transform=data_crs)\nplt.savefig('foo.png', bbox_inches='tight')\nplt.show()\n\n2023-12-22\n2024-01-01"
+  },
+  {
+    "objectID": "chap3.html#test-bickley-jet-not-distributed",
+    "href": "chap3.html#test-bickley-jet-not-distributed",
+    "title": "4  Bickley Jet from CoherentStructures.jl",
+    "section": "4.1 TEST BiCKLEY JET NOT DISTRIBUTED",
+    "text": "4.1 TEST BiCKLEY JET NOT DISTRIBUTED\n\n\nCode\n#using Distributed\n#nprocs() == 1 && addprocs()\n#@everywhere begin\n          import Pkg\n          Pkg.activate(\"/Users/julios/JULIA/CoherentStructures.jl/\")\n#       end\n\n#@everywhere \nusing CoherentStructures, StreamMacros\nconst bickley = @velo_from_stream psi begin\n    psi  = psi₀ + psi₁\n    psi₀ = - U₀ * L₀ * tanh(y / L₀)\n    psi₁ =   U₀ * L₀ * sech(y / L₀)^2 * re_sum_term\n\n    re_sum_term = Σ₁ + Σ₂ + Σ₃\n\n    Σ₁ = ε₁ * cos(k₁*(x - c₁*t))\n    Σ₂ = ε₂ * cos(k₂*(x - c₂*t))\n    Σ₃ = ε₃ * cos(k₃*(x - c₃*t))\n\n    k₁ = 2/r₀    ; k₂ = 4/r₀   ; k₃ = 6/r₀\n    ε₁ = 0.0075  ; ε₂ = 0.15   ; ε₃ = 0.3\n    c₂ = 0.205U₀ ; c₃ = 0.461U₀; c₁ = c₃ + (√5-1)*(c₂-c₃)\n    U₀ = 62.66e-6; L₀ = 1770e-3; r₀ = 6371e-3\nend\n\n#@everywhere \nusing OrdinaryDiffEq, Tensors\nq = 81\nconst tspan = range(0., stop=3456000., length=q)\nny = 61\nnx = (22ny) ÷ 6\nxmin, xmax, ymin, ymax = 0.0 - 2.0, 6.371π + 2.0, -3.0, 3.0\nxspan = range(xmin, stop=xmax, length=nx)\nyspan = range(ymin, stop=ymax, length=ny)\nP = tuple.(xspan, yspan')\nconst δ = 1.e-6\nconst D = SymmetricTensor{2,2}((2., 0., 1/2))\nmCG_tensor = u -&gt; av_weighted_CG_tensor(bickley, u, tspan, δ; D=(_ -&gt; D), tolerance=1e-6, solver=Tsit5())\n\n#C̅ = pmap(mCG_tensor, P; batch_size=ceil(Int, length(P)/nprocs()^2))\nC̅ = map(mCG_tensor, P)\np = LCSParameters(2.0)\nvortices, singularities = ellipticLCS(C̅, xspan, yspan, p)\n\nusing Plots\ntrace = tensor_invariants(C̅)[5]\nfig = plot_vortices(vortices, singularities, (xmin, ymin), (xmax, ymax);\n    bg=trace, xspan=xspan, yspan=yspan, title=\"DBS field and transport barriers\", showlabel=false)\nPlots.plot(fig)\n\n\n┌ Warning: ProgressMeter by default refresh meters with additional information in IJulia via `IJulia.clear_output`, which clears all outputs in the cell. \n│  - To prevent this behaviour, do `ProgressMeter.ijulia_behavior(:append)`. \n│  - To disable this warning message, do `ProgressMeter.ijulia_behavior(:clear)`.\n└ @ ProgressMeter ~/.julia/packages/ProgressMeter/sN2xr/src/ProgressMeter.jl:618\nDetecting vortices 100%|█████████████████████████████████| Time: 0:00:16\n  num_barriers:  7\n\n\n[ Info: Found 7 elliptic barriers in total.\n\n\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n  \n    \n  \n\n\n\n\n\n\nFigure 4.1: Stream Plot"
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "5  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever."
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97."
+  }
+]
