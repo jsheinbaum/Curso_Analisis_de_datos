@@ -19,5 +19,14 @@
   },
   "references.qmd": {
     "references.html": "a8c72b46"
+  },
+  "chap4.qmd": {
+    "chap4.html": "50b7ec1d"
+  },
+  "article2.qmd": {
+    "article2.html": "c119a113"
+  },
+  "chap6.qmd": {
+    "chap6.html": "49ce6312"
   }
 }

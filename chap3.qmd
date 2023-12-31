@@ -17,7 +17,7 @@ jupyter: julia1.9
 #nprocs() == 1 && addprocs()
 #@everywhere begin
           import Pkg
-          Pkg.activate("/Users/julios/JULIA/CoherentStructures.jl/")
+          Pkg.activate("/Users/julios/JULIA/CoherentStructures_julia1.9.jl/")
 #       end
 
 #@everywhere 

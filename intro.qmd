@@ -1,26 +1,36 @@
-# Introduction
+# Introducción
 
 Un estudio científico en cualquiera de las ramas de la ciencia
-necesita de alg\'un procedimiento para colectar
-datos y del uso de  m\'etodos matematicos para analizarlos y
-obtener resultados e interpretarlos. Si el m\'etodo de obtenci\'on
+necesita de algún procedimiento para colectar
+datos y usar métodos matematicos para analizarlos,
+obtener resultados e interpretarlos. Si el método de obtención
 de datos no es el adecuado, entonces no hay analisis alguno que
-logre interpretar correctamente los resultados -a menos que descubramos muestro error-!. Por ejemplo, si queremos conocer cu\'al es la temperatura promedio de la bahía de Todos Santos y siempre medimos durante el invierno, entonces estaremos sobreestimando err\'oneamente su temperatura promedio. Y no es un error decir sobreestimando,  ya que la bahía de Todos Santos está dominada por el sistema de afloramiento de California y, generalmente, es en verano cuando tenemos las temperaturas mas frías en la bahía. Por el contrario, si medimos en el estero de punta banda (aguas mas estancadas e influenciadas enormemente por la radiaci\'on solar), tambi\'en estaremos sobreestimando la temperatura. En estos casos los muestreos no son adecuados para responder a la pregunta planteada. La estadística nos ayuda en gran medida a dise\~nar experimentos y a escoger la forma mas adecuada de muestrear.
+logre interpretar correctamente los resultados -a menos que descubramos muestro error-!. 
+Por ejemplo, si queremos conocer cuál es la temperatura promedio de la bahía de Todos 
+Santos y siempre medimos durante el invierno, entonces estaremos sobreestimando 
+erróneamente su temperatura promedio. Y no es un error decir sobreestimando,  
+ya que la bahía de Todos Santos está dominada por el sistema de afloramiento de la costa de
+California y, generalmente, es en verano cuando tenemos las temperaturas mas friías 
+en la bahía. Por el contrario, si medimos en el estero de punta banda (aguas mas estancadas 
+e influenciadas enormemente por la radiación solar), estaríamos,en principio, subestimando la 
+temperatura del estero. En estos casos los muestreos no son adecuados para responder a la 
+pregunta planteada. La estadística nos ayuda en gran medida a diseñar experimentos y 
+a escoger la forma mas adecuada de muestrear.
 
 ## Escalas de variabilidad
 
-En el oc\'eano conviven una gran cantidad de corrientes de
+En el océano conviven una gran cantidad de corrientes de
 diferentes escalas espaciales y temporales.
-Las escalas espaciales típicas de la circulaci\'on oce\'anica
+Las escalas espaciales típicas de la circulación oceánica
 son la gran escala, la mesoescala, submesoescala, y microescala.
 La gran escala es del ${\cal O}(1000\,{\rm km})$ y está
-determinada por la circulaci\'on general en el oc\'eano
-como la celda de circulación meridional y los grandes giros anticicl\'onicos de las grandes cuencas oce\'anicas; las escalas temporales
+determinada por la circulación general en el océano
+como la celda de circulación meridional y los grandes giros anticiclónicos de las grandes cuencas oceánicas; las escalas temporales
 de la larga escala varían entre meses,a\~nos y cientos de años.
 La mesoescala esta definida por corrientes de  ${\cal O}(100\,{\rm km})$
 como remolinos, corrientes costeras, filamentos, frentes,
 etc. Son corrientes mas regionales pero pueden tener
-gran influencia sobre la circulaci\'on general o de larga
+gran influencia sobre la circulación general o de larga
 escala. Sus escalas temporales son de semanas a meses.
 La submesoescala corresponde a corrientes del
 ${\cal O}(10\,{\rm km})$ de caracter local: remolinos,
@@ -30,7 +40,7 @@ tiempos que varían de horas a días. Finalmente podemos hablar
 de la microescala que son remolinos del orden de centímetros a
 metros y generalmente es la escala característica de la turbulencia
 que transfiere energía desde la submesoescala hacia la
-disipaci\'on molecular. Aquí podemos hablar de fen\'omenos del
+disipación molecular. Aquí podemos hablar de fenómenos del
 orden de segundos y minutos.
 
 

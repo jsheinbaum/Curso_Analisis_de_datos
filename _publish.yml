@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 794a29de-ffdd-49c1-9181-3f8e9f2bcdb3
+      url: 'https://jsheinbaum.quarto.pub/curso-datos'

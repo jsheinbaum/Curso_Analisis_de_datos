@@ -1,5 +1,27 @@
-# Preface {.unnumbered}
+# Prefacio {.unnumbered}
 
-This is a Quarto book.
+En el océano conviven una gran cantidad de corrientes de
+diferentes escalas espaciales y temporales.
+Las escalas espaciales típicas de la circulación oceánica
+son la gran escala, la mesoescala, submesoescala, y microescala.
+La gran escala es ${\cal O}(1000\,{\rm km})$ y está
+determinada por la circulación general del océano incluyendo los 
+grandes giros de las grandes cuencas oceánicas y la celda de circulación meridional;
+las escalas temporales de la gran escala varía entre meses hasta cientos 
+de años. La mesoescala está definida por corrientes ${\cal O}(100\,{\rm km})$
+como remolinos, corrientes costeras, filamentos, frentes,
+etc. Son corrientes mas regionales pero pueden tener
+gran influencia sobre la circulación general (o de gran
+escala). Sus escalas temporales son de semanas a meses.
+La submesoescala corresponde a corrientes 
+${\cal O}(10\,{\rm km})$ de caracter local: remolinos,
+filamentos, frentes, corrientes en playas, puertos, y
+estuarios. La submesoscala varía en tiempos que varían 
+de horas a días. Finalmente podemos hablar
+de la microescala que son remolinos del orden de centímetros a
+metros y generalmente es la escala característica de la turbulencia
+que transfiere energía desde la submesoescala hacia la
+disipación molecular. Aquí podemos hablar de fenómenos del
+orden de segundos y minutos.
 
 To learn more about Quarto books visit <https://quarto.org/docs/books>.

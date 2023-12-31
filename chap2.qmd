@@ -49,6 +49,9 @@ $$
 ::::
 
 ## Julia
+
+Example taken from <https://docs.makie.org/stable/>
+
 ```{julia}
 #| echo: true
 using GLMakie
@@ -95,8 +98,9 @@ record(fig, "lorenz.mp4", 1:120) do frame
     l.colorrange = (0, frame)
 end
 ```
-## Lorenz Atractor {background-video="lorenz.mp4"  background-video-loop="true"}
+## Lorenz Atractor {background-video="./lorenz.mp4"  background-video-loop="true"}
 
+{{< video ./lorenz.mp4  >}}
 
 {{< include _basics_jupyter.qmd >}}
 
@@ -144,7 +148,7 @@ print(inittime)
 print(finaltime)
 lat_toplot = np.arange(5, 35.25, 0.25) # last number is exclusive
 lon_toplot = np.arange(260, 310.25, 0.25) # last number is exclusive
-dataw= dsw.sel(time1=slice(inittime,finaltime),height_above_ground2=10, lon=lon_toplot, lat=lat_toplot)
+dataw= dsw.sel(time=slice(inittime,finaltime),height_above_ground2=10, lon=lon_toplot, lat=lat_toplot)
 u10=dataw['u-component_of_wind_height_above_ground'].values
 v10=dataw['v-component_of_wind_height_above_ground'].values
 lon=dataw.lon.values
@@ -155,7 +159,7 @@ V10=v10[l,:,:].squeeze()
 vec_crs = ccrs.RotatedPole(pole_longitude=180.0, pole_latitude=90.0)
 #central_rotated_longitude=0.0)
 data_crs=ccrs.PlateCarree()
-#print(dataw.time1[l])
+#print(dataw.time[l])
 fig = plt.figure(figsize=(20, 5))
 ax1 = fig.add_subplot(1, 1, 1, projection=ccrs.PlateCarree())
 ax1.set_extent([260, 311, 4, 40], crs=ccrs.PlateCarree())
@@ -167,6 +171,22 @@ ax1.streamplot(lon, lat, U10, V10, transform=vec_crs,
 ax1.quiver(lon[::5],lat[::5],U10[::5,::5],V10[::5,::5],scale=200.0,color='b',transform=data_crs)
 plt.savefig('foo.png', bbox_inches='tight')
 plt.show()
+```
+## Plotly
+:::: {.columns}
+
+::: {.column width="60%"}
+```{python}
+#| echo: true
+#| output-location: slide
+import plotly.express as px
+import plotly.io as pio
+df = px.data.iris()
+fig = px.scatter(df, x="sepal_width", y="sepal_length", 
+                 color="species", 
+                 marginal_y="violin", marginal_x="box", 
+                 trendline="ols", template="simple_white")
+fig.show()
 ```
 ::: 
 

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="A side-by-side comparison of the Polars and Pandas libraries.">
+<meta name="description" content="Curso de Análisis de Datos, Oceanografía Física, CICESE.">
 
-<title>Curso de Análisis de Datos - 1&nbsp; Introduction</title>
+<title>Curso de Análisis de Datos - 1&nbsp; Introducción</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,7 +86,7 @@ div.csl-indent {
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="custom.css">
+<link rel="stylesheet" href="customs.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -98,7 +98,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -155,13 +155,13 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -184,8 +184,14 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./article2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Chapter 4 Notas Curso Análisis de datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -213,7 +219,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introducción</span></h1>
 </div>
 
 
@@ -228,11 +234,12 @@ div.csl-indent {
 
 </header>
 
-<p>Un estudio científico en cualquiera de las ramas de la ciencia necesita de alg'un procedimiento para colectar datos y del uso de m'etodos matematicos para analizarlos y obtener resultados e interpretarlos. Si el m'etodo de obtenci'on de datos no es el adecuado, entonces no hay analisis alguno que logre interpretar correctamente los resultados -a menos que descubramos muestro error-!. Por ejemplo, si queremos conocer cu'al es la temperatura promedio de la bahía de Todos Santos y siempre medimos durante el invierno, entonces estaremos sobreestimando err'oneamente su temperatura promedio. Y no es un error decir sobreestimando, ya que la bahía de Todos Santos está dominada por el sistema de afloramiento de California y, generalmente, es en verano cuando tenemos las temperaturas mas frías en la bahía. Por el contrario, si medimos en el estero de punta banda (aguas mas estancadas e influenciadas enormemente por la radiaci'on solar), tambi'en estaremos sobreestimando la temperatura. En estos casos los muestreos no son adecuados para responder a la pregunta planteada. La estadística nos ayuda en gran medida a dise~nar experimentos y a escoger la forma mas adecuada de muestrear.</p>
+<p>Un estudio científico en cualquiera de las ramas de la ciencia necesita de algún procedimiento para colectar datos y usar métodos matematicos para analizarlos, obtener resultados e interpretarlos. Si el método de obtención de datos no es el adecuado, entonces no hay analisis alguno que logre interpretar correctamente los resultados -a menos que descubramos muestro error-!. Por ejemplo, si queremos conocer cuál es la temperatura promedio de la bahía de Todos Santos y siempre medimos durante el invierno, entonces estaremos sobreestimando erróneamente su temperatura promedio. Y no es un error decir sobreestimando,<br>
+ya que la bahía de Todos Santos está dominada por el sistema de afloramiento de la costa de California y, generalmente, es en verano cuando tenemos las temperaturas mas friías en la bahía. Por el contrario, si medimos en el estero de punta banda (aguas mas estancadas e influenciadas enormemente por la radiación solar), estaríamos,en principio, subestimando la temperatura del estero. En estos casos los muestreos no son adecuados para responder a la pregunta planteada. La estadística nos ayuda en gran medida a diseñar experimentos y a escoger la forma mas adecuada de muestrear.</p>
 <section id="escalas-de-variabilidad" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="escalas-de-variabilidad"><span class="header-section-number">1.1</span> Escalas de variabilidad</h2>
-<p>En el oc'eano conviven una gran cantidad de corrientes de diferentes escalas espaciales y temporales. Las escalas espaciales típicas de la circulaci'on oce'anica son la gran escala, la mesoescala, submesoescala, y microescala. La gran escala es del <span class="math inline">\({\cal O}(1000\,{\rm km})\)</span> y está determinada por la circulaci'on general en el oc'eano como la celda de circulación meridional y los grandes giros anticicl'onicos de las grandes cuencas oce'anicas; las escalas temporales de la larga escala varían entre meses,a~nos y cientos de años. La mesoescala esta definida por corrientes de <span class="math inline">\({\cal O}(100\,{\rm km})\)</span> como remolinos, corrientes costeras, filamentos, frentes, etc. Son corrientes mas regionales pero pueden tener gran influencia sobre la circulaci'on general o de larga escala. Sus escalas temporales son de semanas a meses. La submesoescala corresponde a corrientes del <span class="math inline">\({\cal O}(10\,{\rm km})\)</span> de caracter local: remolinos, filamentos, frentes, corrientes en playas, puertos, y estuarios. La submesoscala varía temporalmente con rapidez en tiempos que varían de horas a días. Finalmente podemos hablar de la microescala que son remolinos del orden de centímetros a metros y generalmente es la escala característica de la turbulencia que transfiere energía desde la submesoescala hacia la disipaci'on molecular. Aquí podemos hablar de fen'omenos del orden de segundos y minutos.</p>
-<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
+<p>En el océano conviven una gran cantidad de corrientes de diferentes escalas espaciales y temporales. Las escalas espaciales típicas de la circulación oceánica son la gran escala, la mesoescala, submesoescala, y microescala. La gran escala es del <span class="math inline">\({\cal O}(1000\,{\rm km})\)</span> y está determinada por la circulación general en el océano como la celda de circulación meridional y los grandes giros anticiclónicos de las grandes cuencas oceánicas; las escalas temporales de la larga escala varían entre meses,a~nos y cientos de años. La mesoescala esta definida por corrientes de <span class="math inline">\({\cal O}(100\,{\rm km})\)</span> como remolinos, corrientes costeras, filamentos, frentes, etc. Son corrientes mas regionales pero pueden tener gran influencia sobre la circulación general o de larga escala. Sus escalas temporales son de semanas a meses. La submesoescala corresponde a corrientes del <span class="math inline">\({\cal O}(10\,{\rm km})\)</span> de caracter local: remolinos, filamentos, frentes, corrientes en playas, puertos, y estuarios. La submesoscala varía temporalmente con rapidez en tiempos que varían de horas a días. Finalmente podemos hablar de la microescala que son remolinos del orden de centímetros a metros y generalmente es la escala característica de la turbulencia que transfiere energía desde la submesoescala hacia la disipación molecular. Aquí podemos hablar de fenómenos del orden de segundos y minutos.</p>
+<p>See <span class="citation" data-cites="knuth84">Knuth (<a href="article2.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
@@ -479,7 +486,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Prefacio</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
