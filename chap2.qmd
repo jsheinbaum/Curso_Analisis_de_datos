@@ -175,7 +175,7 @@ plt.show()
 ## Plotly
 :::: {.columns}
 
-::: {.column width="60%"}
+::: {.column width="90%"}
 ```{python}
 #| echo: true
 #| output-location: slide

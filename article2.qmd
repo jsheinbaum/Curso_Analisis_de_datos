@@ -2,6 +2,7 @@
 title: "Notas Curso Análisis de datos"
 format:
   pdf:
+#    template: ./agujournaltemplate.tex
     agu-pdf:
         keep-tex: true
     agu-html: default
@@ -1473,8 +1474,8 @@ $5\%*100=0.05*100=5$ muestras de las $100$ dan positivo y no tienen diatomeas.
 Por ello, sabiendo que la muestra que tiene diatomeas dio positivo,
 de $6$ positivos, solamente $1$ es cierto.
 
-\includepdf[pages={18,19,20}]{review_statistics_hartmann_1.pdf}
-\includepdf[pages={25,26,27}]{review_statistics_hartmann_1.pdf}
+\includepdf[pages={18,19,20}]{../review_statistics_hartmann_1.pdf}
+\includepdf[pages={25,26,27}]{../review_statistics_hartmann_1.pdf}
 
 ## Repaso de álgebra Lineal
 

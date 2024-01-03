@@ -14,8 +14,8 @@ book:
     logo: cicese_logo.png
     search: true
   repo-url: https://github.com/jsheinbaum/curso_analisis_de_datos/
-  repo-subdir: book
-  repo-branch: default
+  #repo-subdir: 
+  #repo-branch: 
   repo-actions: [edit, issue, source]
   sharing: [twitter, facebook, linkedin]
   image: cicese_logo.png

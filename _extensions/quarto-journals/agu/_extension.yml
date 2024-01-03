@@ -19,20 +19,8 @@ contributes:
         \usepackage{lineno}
         \usepackage[inline]{trackchanges} %for better track changes. finalnew option will compile document with changes incorporated.
         \usepackage{soul}
-        \usepackage[spanish]{babel}
-        \usepackage[utf8]{inputenc}
-        \usepackage{amsmath}
-        \usepackage{bm}
-        \usepackage{amsbsy}
-        \usepackage{graphicx}
-        \usepackage{minitoc}
-        \usepackage{setspace}
-        \usepackage{fancyhdr}
-        \usepackage{framed}
-        \usepackage{multicol}
-        \usepackage{color}
         \usepackage{pdfpages}
-        \selectlanguage{spanish}
+        \usepackage{framed}
         \linenumbers
       template-partials:
         - "partials/title.tex"
